@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Verify Terraform') {
+           steps {
+               script {
+                   sh 'which terraform'
+                   sh 'terraform -version'
+                }
+            }   
+        }
         stage('Terraform init') {
             steps {
                 script {
@@ -25,6 +33,6 @@ pipeline {
             }
         }
       
-	}
+    }
 }
 	
